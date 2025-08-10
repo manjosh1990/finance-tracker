@@ -2,7 +2,6 @@
 package com.manjosh.labs.backend;
 
 import org.springframework.boot.SpringApplication;
-import org.testcontainers.utility.TestcontainersConfiguration;
 
 public class TestBackendApplication {
 
