@@ -24,5 +24,8 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
+          cache-path: backend
+      - name: Make Maven Wrapper Executable
+        run: chmod +x mvnw
       - name: Build with Maven
         run: ./mvnw -ntp verify
