@@ -5,7 +5,6 @@ public record Profile(
         String fullName,
         String email,
         String password,
-        String profileImageUrl
-        , long createdAt, long updatedAt
-) {
-}
+        String profileImageUrl,
+        long createdAt,
+        long updatedAt) {}
