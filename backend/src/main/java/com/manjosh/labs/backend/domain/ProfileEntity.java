@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +16,8 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "tbl_profiles")
 @Data
@@ -25,7 +26,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Setter
 @Getter
 @Builder
-public class ProfileEntity {
+class ProfileEntity {
     @Id
     @SequenceGenerator(name = "ft_id_seq_gen", sequenceName = "ft_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ft_id_seq_gen")
