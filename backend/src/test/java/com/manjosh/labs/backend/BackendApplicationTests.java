@@ -2,13 +2,8 @@
 package com.manjosh.labs.backend;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import org.testcontainers.utility.TestcontainersConfiguration;
 
-@Import(TestcontainersConfiguration.class)
-@SpringBootTest
-class BackendApplicationTests {
+class BackendApplicationTests extends AbstractIT {
     @Test
     void contextLoads() {}
 }
