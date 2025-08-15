@@ -5,6 +5,7 @@ class ProfileMapper {
     public static final String MASKED_PASSWORD = "********";
 
     private ProfileMapper() {}
+
     static Profile toProfile(ProfileEntity profileEntity) {
         return new Profile(
                 profileEntity.getId(),
