@@ -6,7 +6,7 @@ class ProfileMapper {
 
     private ProfileMapper() {}
 
-    static Profile toProfile(ProfileEntity profileEntity) {
+    static Profile toProfile(final ProfileEntity profileEntity) {
         return new Profile(
                 profileEntity.getId(),
                 profileEntity.getFullName(),
@@ -17,7 +17,7 @@ class ProfileMapper {
                 profileEntity.getUpdatedAt());
     }
 
-    static ProfileEntity toProfileEntity(Profile profile) {
+    static ProfileEntity toProfileEntity(final Profile profile) {
         return ProfileEntity.builder()
                 .id(profile.id())
                 .fullName(profile.fullName())

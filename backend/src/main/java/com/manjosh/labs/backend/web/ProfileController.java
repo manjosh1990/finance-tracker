@@ -3,6 +3,7 @@ package com.manjosh.labs.backend.web;
 import com.manjosh.labs.backend.domain.Profile;
 import com.manjosh.labs.backend.domain.ProfileService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,6 @@ class ProfileController {
     @PostMapping("/register")
     ResponseEntity<Profile> registerProfile(@RequestBody final Profile profile) {
         final Profile savedProfile = profileService.registerProfile(profile);
-        return ResponseEntity.ok(savedProfile);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedProfile);
     }
 }

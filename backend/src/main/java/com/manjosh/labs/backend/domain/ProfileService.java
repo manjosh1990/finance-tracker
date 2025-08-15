@@ -22,7 +22,7 @@ public class ProfileService {
     public Profile registerProfile(Profile profile) {
         final ProfileEntity newProfile = ProfileMapper.toProfileEntity(profile);
         newProfile.setActivationToken(UUID.randomUUID().toString());
-        ProfileEntity saved = profileRepository.save(newProfile);
+        final ProfileEntity saved = profileRepository.save(newProfile);
         return ProfileMapper.toProfile(saved);
     }
 }

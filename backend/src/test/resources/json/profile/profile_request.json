@@ -1,0 +1,6 @@
+{
+  "fullName": "John Doe",
+  "email": "john.doe@example.com",
+  "password": "securePassword123",
+  "profileImageUrl": "https://example.com/images/john_doe.jpg"
+}
