@@ -7,7 +7,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
 import org.testcontainers.utility.TestcontainersConfiguration;
 
-@Import(TestcontainersConfiguration.class)
+@Import({TestcontainersConfiguration.class, NoOpEmailService.class})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public abstract class AbstractIT {
     @LocalServerPort
