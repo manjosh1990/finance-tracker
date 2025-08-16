@@ -2,6 +2,7 @@ package com.manjosh.labs.backend.web;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 
 import com.manjosh.labs.backend.AbstractIT;
 import com.manjosh.labs.backend.domain.Profile;
@@ -22,6 +23,8 @@ class ProfileControllerTest extends AbstractIT {
                 .then()
                 .statusCode(201)
                 .body("fullName", equalTo("John Doe"))
-                .body("email", equalTo("john.doe@example.com"));
+                .body("email", equalTo("john.doe@example.com"))
+                .body("updatedAt", notNullValue())
+                .body("createdAt", notNullValue());
     }
 }

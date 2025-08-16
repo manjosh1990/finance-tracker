@@ -7,8 +7,8 @@ CREATE TABLE tbl_profiles (
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     profile_image_url VARCHAR(255),
-    created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP WITHOUT TIME ZONE,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
     is_active boolean DEFAULT false,
     activation_token VARCHAR(255),
     primary key (profile_id)

@@ -23,6 +23,7 @@ public class ProfileService {
         final ProfileEntity newProfile = ProfileMapper.toProfileEntity(profile);
         newProfile.setActivationToken(UUID.randomUUID().toString());
         final ProfileEntity saved = profileRepository.save(newProfile);
+        profileRepository.flush();
         return ProfileMapper.toProfile(saved);
     }
 }
