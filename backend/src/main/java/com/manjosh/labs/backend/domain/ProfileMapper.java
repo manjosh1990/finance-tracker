@@ -6,6 +6,18 @@ class ProfileMapper {
 
     private ProfileMapper() {}
 
+    static Profile toProfile(final ProfileEntity profileEntity, boolean hidePassword) {
+        return new Profile(
+                profileEntity.getId(),
+                profileEntity.getFullName(),
+                profileEntity.getEmail(),
+                hidePassword ? toPassword() : profileEntity.getPassword(),
+                profileEntity.getProfileImageUrl(),
+                profileEntity.getCreatedAt(),
+                profileEntity.getUpdatedAt(),
+                profileEntity.getActivationToken());
+    }
+
     static Profile toProfile(final ProfileEntity profileEntity) {
         return new Profile(
                 profileEntity.getId(),
