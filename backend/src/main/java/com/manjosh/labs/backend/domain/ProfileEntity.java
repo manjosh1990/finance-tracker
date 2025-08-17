@@ -1,7 +1,6 @@
 package com.manjosh.labs.backend.domain;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,7 +38,6 @@ class ProfileEntity {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Convert(converter = EncodePasswordConverter.class)
     @Column(nullable = false)
     private String password;
 

@@ -1,5 +1,6 @@
 package com.manjosh.labs.backend.domain;
 
+import com.manjosh.labs.backend.utils.PasswordEncoderSingleTon;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,7 @@ public class ProfileService {
     public Profile registerProfile(final Profile profile, final boolean triggerActivationEmail) {
         final ProfileEntity newProfile = ProfileMapper.toProfileEntity(profile);
         newProfile.setActivationToken(UUID.randomUUID().toString());
+        newProfile.setPassword(PasswordEncoderSingleTon.INSTANCE.encode(newProfile.getPassword()));
         final ProfileEntity saved = profileRepository.saveAndFlush(newProfile);
         if (triggerActivationEmail) {
             triggerActivationEmail(saved);

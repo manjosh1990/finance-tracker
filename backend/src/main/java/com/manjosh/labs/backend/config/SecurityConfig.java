@@ -1,6 +1,7 @@
 package com.manjosh.labs.backend.config;
 
 import com.manjosh.labs.backend.domain.CustomUserDetailsService;
+import com.manjosh.labs.backend.utils.PasswordEncoderSingleTon;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -79,7 +80,7 @@ public class SecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
-        provider.setPasswordEncoder(passwordEncoder());
+        provider.setPasswordEncoder(PasswordEncoderSingleTon.INSTANCE.getEncoder());
         return new ProviderManager(provider);
     }
 }
