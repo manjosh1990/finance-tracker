@@ -14,7 +14,8 @@ class ProfileMapper {
                 toPassword(),
                 profileEntity.getProfileImageUrl(),
                 profileEntity.getCreatedAt(),
-                profileEntity.getUpdatedAt());
+                profileEntity.getUpdatedAt(),
+                profileEntity.getActivationToken());
     }
 
     static ProfileEntity toProfileEntity(final Profile profile) {

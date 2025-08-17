@@ -9,4 +9,5 @@ public record Profile(
         String password,
         String profileImageUrl,
         LocalDateTime createdAt,
-        LocalDateTime updatedAt) {}
+        LocalDateTime updatedAt,
+        String activationCode) {}
