@@ -1,11 +1,12 @@
 package com.manjosh.labs.backend.domain;
 
-import java.util.List;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +34,7 @@ public class ProfileService {
 
     private void triggerActivationEmail(final ProfileEntity profile) {
         final String activationLink = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/api/v1.0/activate")
+                .path("/activate")
                 .queryParam("token", profile.getActivationToken())
                 .toUriString();
         final String subject = "FinanceTracker- Account Activation";
