@@ -4,7 +4,6 @@ import com.manjosh.labs.backend.domain.Auth;
 import com.manjosh.labs.backend.domain.AuthService;
 import com.manjosh.labs.backend.domain.Profile;
 import com.manjosh.labs.backend.domain.ProfileService;
-import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -52,5 +53,10 @@ class ProfileController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("message", e.getMessage()));
         }
+    }
+
+    @GetMapping("/test")
+    public String test(){
+        return "test success";
     }
 }
