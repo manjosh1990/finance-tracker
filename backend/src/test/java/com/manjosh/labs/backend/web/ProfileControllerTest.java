@@ -7,19 +7,16 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 
 import com.manjosh.labs.backend.AbstractIT;
-import com.manjosh.labs.backend.NoOpEmailService;
 import com.manjosh.labs.backend.domain.Profile;
 import com.manjosh.labs.backend.domain.ProfileService;
 import com.manjosh.labs.backend.utils.TestUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
-@Import(NoOpEmailService.class)
 class ProfileControllerTest extends AbstractIT {
     private final TestUtils testUtils = new TestUtils();
     private static final String BASE_URL = "src/test/resources/json/profile/";

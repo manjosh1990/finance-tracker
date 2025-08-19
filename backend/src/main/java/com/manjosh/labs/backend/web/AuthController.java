@@ -19,7 +19,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String, Object>> getPublicProfile(@RequestBody final Auth auth) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody final Auth auth) {
         if (!profileService.isProfileActive(auth.email())) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("message", "Profile not activated"));
         }
