@@ -2,14 +2,13 @@ package com.manjosh.labs.backend.securityconfig;
 
 import com.manjosh.labs.backend.domain.profile.Profile;
 import com.manjosh.labs.backend.domain.profile.ProfileService;
+import java.util.Collections;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
 
 @Service
 @RequiredArgsConstructor
