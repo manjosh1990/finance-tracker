@@ -36,7 +36,7 @@ public class JwtUtil {
         return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
 
-    private boolean isTokenExpired(String token) {
+    public boolean isTokenExpired(String token) {
         Date expiration = Jwts.parser()
                 .verifyWith(Keys.hmacShaKeyFor(jwtProperties.secret().getBytes()))
                 .build()
@@ -44,5 +44,14 @@ public class JwtUtil {
                 .getPayload()
                 .getExpiration();
         return expiration.before(new Date());
+    }
+
+    public String generateRefreshToken(final String username) {
+        return Jwts.builder()
+                .subject(username)
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + jwtProperties.refreshExpirationInMs()))
+                .signWith(Keys.hmacShaKeyFor(jwtProperties.secret().getBytes()), Jwts.SIG.HS256)
+                .compact();
     }
 }
