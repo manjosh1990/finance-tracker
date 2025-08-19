@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @Service
 @RequiredArgsConstructor
 public class ProfileService {
+    public static final String PROFILE_NOT_FOUND_FOR_EMAIL = "Profile not found for email: ";
     private final ProfileRepository profileRepository;
     private final EmailService emailService;
 
@@ -49,13 +50,21 @@ public class ProfileService {
         return profileRepository.findByEmail(email).map(ProfileEntity::isActive).orElse(false);
     }
 
+    public ProfileEntity getCurrentProfile() {
+        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        final String email = authentication.getName();
+        return profileRepository
+                .findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException(PROFILE_NOT_FOUND_FOR_EMAIL + email));
+    }
+
     public Profile getCurrentProfile(final boolean hidePassword) {
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         final String email = authentication.getName();
         return profileRepository
                 .findByEmail(email)
                 .map(profile -> ProfileMapper.toProfile(profile, hidePassword))
-                .orElseThrow(() -> new UsernameNotFoundException("Profile not found for email: " + email));
+                .orElseThrow(() -> new UsernameNotFoundException(PROFILE_NOT_FOUND_FOR_EMAIL + email));
     }
 
     public Profile getPublicProfile(String email) {
@@ -65,7 +74,7 @@ public class ProfileService {
         return profileRepository
                 .findByEmail(email)
                 .map(ProfileMapper::toProfile)
-                .orElseThrow(() -> new UsernameNotFoundException("Profile not found for email: " + email));
+                .orElseThrow(() -> new UsernameNotFoundException(PROFILE_NOT_FOUND_FOR_EMAIL + email));
     }
 
     private void triggerActivationEmail(final ProfileEntity profile) {

@@ -1,55 +1,48 @@
-package com.manjosh.labs.backend.domain.profile;
+package com.manjosh.labs.backend.domain.categories;
 
+import com.manjosh.labs.backend.domain.profile.ProfileEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedEntityGraph;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "tbl_profiles")
+@Table(name = "tbl_categories")
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
+@NamedEntityGraph
 @Builder
-public class ProfileEntity {
+public class CategoryEntity {
     @Id
     @SequenceGenerator(name = "ft_id_seq_gen", sequenceName = "ft_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ft_id_seq_gen")
-    @Column(name = "profile_id")
     private Long id;
 
-    @Column(nullable = false)
-    private String fullName;
+    private String name;
+    private String type;
+    private String icon;
 
-    @Column(unique = true, nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private String password;
-
-    private String profileImageUrl;
-
-    @Column(updatable = false)
     @CreationTimestamp
+    @Column(updatable = false)
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    private boolean isActive;
-    private String activationToken;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "profile_id", nullable = false)
+    private ProfileEntity profile;
 }
