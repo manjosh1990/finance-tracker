@@ -7,8 +7,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 
 import com.manjosh.labs.backend.AbstractIT;
-import com.manjosh.labs.backend.domain.Profile;
-import com.manjosh.labs.backend.domain.ProfileService;
+import com.manjosh.labs.backend.domain.profile.Profile;
+import com.manjosh.labs.backend.domain.profile.ProfileService;
 import com.manjosh.labs.backend.utils.TestUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

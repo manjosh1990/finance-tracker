@@ -1,4 +1,4 @@
-package com.manjosh.labs.backend.domain;
+package com.manjosh.labs.backend.domain.profile;
 
 class ProfileMapper {
 

@@ -1,12 +1,16 @@
-package com.manjosh.labs.backend.domain;
+package com.manjosh.labs.backend.domain.authentication;
 
+import com.manjosh.labs.backend.domain.profile.ProfileService;
+import com.manjosh.labs.backend.securityconfig.CustomUserDetailsService;
 import com.manjosh.labs.backend.utils.JwtUtil;
-import java.util.Map;
+import com.manjosh.labs.backend.web.exception.AuthenticationFailedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor

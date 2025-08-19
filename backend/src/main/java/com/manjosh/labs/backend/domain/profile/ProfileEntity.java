@@ -1,4 +1,4 @@
-package com.manjosh.labs.backend.domain;
+package com.manjosh.labs.backend.domain.profile;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

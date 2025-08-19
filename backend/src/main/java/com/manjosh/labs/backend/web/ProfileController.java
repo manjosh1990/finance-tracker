@@ -1,7 +1,7 @@
 package com.manjosh.labs.backend.web;
 
-import com.manjosh.labs.backend.domain.Profile;
-import com.manjosh.labs.backend.domain.ProfileService;
+import com.manjosh.labs.backend.domain.profile.Profile;
+import com.manjosh.labs.backend.domain.profile.ProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

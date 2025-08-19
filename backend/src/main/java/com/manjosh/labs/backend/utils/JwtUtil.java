@@ -1,6 +1,6 @@
 package com.manjosh.labs.backend.utils;
 
-import com.manjosh.labs.backend.domain.JwtProperties;
+import com.manjosh.labs.backend.domain.authentication.JwtProperties;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import java.util.Date;

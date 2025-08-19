@@ -1,9 +1,9 @@
 package com.manjosh.labs.backend.web;
 
-import com.manjosh.labs.backend.domain.Auth;
-import com.manjosh.labs.backend.domain.AuthService;
-import com.manjosh.labs.backend.domain.ProfileService;
-import com.manjosh.labs.backend.domain.RefreshToken;
+import com.manjosh.labs.backend.domain.authentication.Auth;
+import com.manjosh.labs.backend.domain.authentication.AuthService;
+import com.manjosh.labs.backend.domain.authentication.RefreshToken;
+import com.manjosh.labs.backend.domain.profile.ProfileService;
 import java.util.Map;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

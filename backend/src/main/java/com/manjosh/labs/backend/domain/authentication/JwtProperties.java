@@ -1,4 +1,4 @@
-package com.manjosh.labs.backend.domain;
+package com.manjosh.labs.backend.domain.authentication;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

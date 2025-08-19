@@ -1,6 +1,5 @@
 package com.manjosh.labs.backend.web.exception;
 
-import com.manjosh.labs.backend.domain.AuthenticationFailedException;
 import java.time.Instant;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;

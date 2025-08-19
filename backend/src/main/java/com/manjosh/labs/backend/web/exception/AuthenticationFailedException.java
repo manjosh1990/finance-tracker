@@ -1,4 +1,4 @@
-package com.manjosh.labs.backend.domain;
+package com.manjosh.labs.backend.web.exception;
 
 public class AuthenticationFailedException extends RuntimeException {
     public AuthenticationFailedException(String message) {

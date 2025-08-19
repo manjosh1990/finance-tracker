@@ -4,7 +4,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 import com.manjosh.labs.backend.AbstractIT;
-import com.manjosh.labs.backend.domain.Auth;
+import com.manjosh.labs.backend.domain.authentication.Auth;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.jdbc.Sql;
 

@@ -1,5 +1,6 @@
-package com.manjosh.labs.backend.domain;
+package com.manjosh.labs.backend.domain.profile;
 
+import com.manjosh.labs.backend.domain.EmailService;
 import com.manjosh.labs.backend.utils.PasswordEncoderSingleTon;
 import java.util.List;
 import java.util.UUID;
