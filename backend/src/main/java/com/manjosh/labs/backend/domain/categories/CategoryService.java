@@ -3,6 +3,7 @@ package com.manjosh.labs.backend.domain.categories;
 import com.manjosh.labs.backend.domain.profile.ProfileEntity;
 import com.manjosh.labs.backend.domain.profile.ProfileService;
 import com.manjosh.labs.backend.web.exception.CategoryException;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,5 +23,20 @@ public class CategoryService {
         CategoryEntity categoryEntity = CategoryMapper.toEntity(category, currentProfile);
         categoryRepository.saveAndFlush(categoryEntity);
         return CategoryMapper.toCategory(categoryEntity);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Category> getCategoriesForCurrentProfile() {
+        final ProfileEntity currentProfile = profileService.getCurrentProfile();
+        return categoryRepository.findByProfileId(currentProfile.getId()).stream()
+                .map(CategoryMapper::toCategory)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Category> getCategoriesByTypeForCurrentProfile(final String type) {
+        List<CategoryEntity> byTypeAndProfileId = categoryRepository.findByTypeAndProfileId(
+                type, profileService.getCurrentProfile().getId());
+        return byTypeAndProfileId.stream().map(CategoryMapper::toCategory).toList();
     }
 }

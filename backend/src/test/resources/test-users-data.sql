@@ -1,3 +1,4 @@
+truncate table tbl_profiles CASCADE;
 INSERT INTO tbl_profiles (
     full_name,
     email,

@@ -6,8 +6,11 @@ import static org.hamcrest.Matchers.notNullValue;
 
 import com.manjosh.labs.backend.AbstractIT;
 import com.manjosh.labs.backend.domain.categories.Category;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.jdbc.Sql;
 
+@Sql("/test-categories-data.sql")
 class CategoryControllerTest extends AbstractIT {
 
     @Test
@@ -28,5 +31,22 @@ class CategoryControllerTest extends AbstractIT {
                 .body("profileId", equalTo(1))
                 .body("createdAt", notNullValue())
                 .body("updatedAt", notNullValue());
+    }
+
+    @Test
+    void testGetAllCategories() {
+        given().auth()
+                .oauth2(getToken())
+                .when()
+                .get("/categories")
+                .then()
+                .statusCode(200)
+                .body("size()", equalTo(5));
+    }
+
+    @Test
+    void testGetCategoriesByType() {
+        Response response = given().auth().oauth2(getToken()).when().get("/categories/EXPENSE");
+        response.then().statusCode(200).body("size()", equalTo(3));
     }
 }
