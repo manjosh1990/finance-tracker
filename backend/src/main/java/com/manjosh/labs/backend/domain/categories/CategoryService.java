@@ -13,7 +13,7 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
     private final ProfileService profileService;
 
-    @Transactional(readOnly = true)
+    @Transactional()
     public Category saveCategory(Category category) {
         final ProfileEntity currentProfile = profileService.getCurrentProfile();
         if (categoryRepository.existsByNameAndProfileId(category.name(), currentProfile.getId())) {
