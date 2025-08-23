@@ -39,4 +39,15 @@ public class CategoryService {
                 type, profileService.getCurrentProfile().getId());
         return byTypeAndProfileId.stream().map(CategoryMapper::toCategory).toList();
     }
+
+    @Transactional
+    public Category updateCategory(Category category) {
+        ProfileEntity currentProfile = profileService.getCurrentProfile();
+        categoryRepository
+                .findByIdAndProfileId(category.id(), currentProfile.getId())
+                .orElseThrow(() -> new CategoryException("Category not found"));
+        CategoryEntity categoryEntity = CategoryMapper.toEntity(category, currentProfile);
+        categoryRepository.saveAndFlush(categoryEntity);
+        return CategoryMapper.toCategory(categoryEntity);
+    }
 }
