@@ -50,4 +50,9 @@ public class CategoryService {
         categoryRepository.saveAndFlush(categoryEntity);
         return CategoryMapper.toCategory(categoryEntity);
     }
+
+    @Transactional(readOnly = true)
+    public CategoryEntity getCategoryEntityById(final Long id) {
+        return categoryRepository.findById(id).orElseThrow(() -> new CategoryException("Category not found"));
+    }
 }
