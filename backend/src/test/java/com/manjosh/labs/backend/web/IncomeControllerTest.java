@@ -9,7 +9,7 @@ import com.manjosh.labs.backend.utils.TestUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.jdbc.Sql;
 
-@Sql("/test-categories-data.sql")
+@Sql({"/test-categories-data.sql", "/test-incomes-expense-data.sql"})
 class IncomeControllerTest extends AbstractIT {
     private final TestUtils testUtils = new TestUtils();
     private static final String BASE_URL = "src/test/resources/json/income/";
@@ -25,5 +25,21 @@ class IncomeControllerTest extends AbstractIT {
                 .then()
                 .statusCode(201)
                 .body("name", equalTo("Salary"));
+    }
+
+    @Test
+    void testGetIncomes() {
+        given().auth()
+                .oauth2(getToken())
+                .when()
+                .get("/incomes")
+                .then()
+                .statusCode(200)
+                .body("size()", equalTo(2));
+    }
+
+    @Test
+    void testDeleteIncome() {
+        given().auth().oauth2(getToken()).when().delete("/incomes/13").then().statusCode(204);
     }
 }
