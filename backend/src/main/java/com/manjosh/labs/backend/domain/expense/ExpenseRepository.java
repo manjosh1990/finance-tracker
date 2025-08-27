@@ -13,7 +13,8 @@ interface ExpenseRepository extends JpaRepository<ExpenseEntity, Long> {
 
     List<ExpenseEntity> findTop5ByProfileIdOrderByTransactionDateDesc(final Long profileId);
 
-    @Query("SELECT SUM(e.amount) FROM ExpenseEntity e WHERE e.profile.id = :profileId")
+    @Query(
+            "SELECT SUM(e.amount) FROM ExpenseEntity e WHERE e.profile.id = :profileId AND YEAR(e.transactionDate) = YEAR(CURRENT_DATE) AND MONTH(e.transactionDate) = MONTH(CURRENT_DATE)")
     BigDecimal findTotalExpenseByProfileId(@Param("profileId") final Long profileId);
 
     List<ExpenseEntity> findByProfileIdAndTransactionDateBetweenAndNameContainingIgnoreCase(

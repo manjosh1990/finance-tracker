@@ -1,7 +1,6 @@
 package com.manjosh.labs.backend.domain.income;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record Income(
@@ -10,7 +9,8 @@ public record Income(
         String icon,
         String description,
         Long categoryId,
+        Long profileId,
         BigDecimal amount,
-        LocalDate transactionDate,
+        String transactionDate,
         LocalDateTime createdAt,
         LocalDateTime updatedAt) {}

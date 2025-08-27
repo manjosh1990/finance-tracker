@@ -2,6 +2,7 @@ package com.manjosh.labs.backend.domain.income;
 
 import com.manjosh.labs.backend.domain.categories.CategoryEntity;
 import com.manjosh.labs.backend.domain.profile.ProfileEntity;
+import java.time.LocalDate;
 
 public class IncomeMapper {
     private IncomeMapper() {}
@@ -15,7 +16,7 @@ public class IncomeMapper {
                 .profile(profile)
                 .category(category)
                 .amount(income.amount())
-                .transactionDate(income.transactionDate())
+                .transactionDate(LocalDate.parse(income.transactionDate()))
                 .description(income.description())
                 .createdAt(income.createdAt())
                 .updatedAt(income.updatedAt())
@@ -29,8 +30,9 @@ public class IncomeMapper {
                 incomeEntity.getIcon(),
                 incomeEntity.getDescription(),
                 incomeEntity.getCategory() != null ? incomeEntity.getCategory().getId() : null,
+                incomeEntity.getProfile() != null ? incomeEntity.getProfile().getId() : null,
                 incomeEntity.getAmount(),
-                incomeEntity.getTransactionDate(),
+                incomeEntity.getTransactionDate().toString(),
                 incomeEntity.getCreatedAt(),
                 incomeEntity.getUpdatedAt());
     }

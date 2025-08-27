@@ -5,6 +5,7 @@ import com.manjosh.labs.backend.domain.categories.CategoryService;
 import com.manjosh.labs.backend.domain.profile.ProfileEntity;
 import com.manjosh.labs.backend.domain.profile.ProfileService;
 import com.manjosh.labs.backend.web.exception.ServiceException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +53,20 @@ public class ExpenseService {
             throw new ServiceException("Unauthorized, Not allowed to delete expense");
         }
         expenseRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Expense> getRecentTopFiveExpenses() {
+        ProfileEntity currentProfile = profileService.getCurrentProfile();
+        return expenseRepository.findTop5ByProfileIdOrderByTransactionDateDesc(currentProfile.getId()).stream()
+                .map(ExpenseMapper::toExpense)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public BigDecimal getTotalExpenseForCurrentProfile() {
+        final ProfileEntity currentProfile = profileService.getCurrentProfile();
+        final BigDecimal total = expenseRepository.findTotalExpenseByProfileId(currentProfile.getId());
+        return total == null ? BigDecimal.ZERO : total;
     }
 }
