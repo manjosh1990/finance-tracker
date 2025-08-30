@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.equalTo;
 import com.manjosh.labs.backend.AbstractIT;
 import com.manjosh.labs.backend.domain.expense.Expense;
 import com.manjosh.labs.backend.utils.TestUtils;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.jdbc.Sql;
 
@@ -16,26 +17,21 @@ class IncomeControllerTest extends AbstractIT {
 
     @Test
     void testSaveAddIncome() {
-        given().contentType("application/json")
+        Response response = given().contentType("application/json")
                 .auth()
                 .oauth2(getToken())
                 .body(testUtils.readJsonFromFile("addIncome.json", BASE_URL, Expense.class))
                 .when()
-                .post("/incomes")
-                .then()
-                .statusCode(201)
-                .body("name", equalTo("Salary"));
+                .post("/incomes");
+        response.prettyPrint();
+        response.then().statusCode(201).body("name", equalTo("Salary"));
     }
 
     @Test
     void testGetIncomes() {
-        given().auth()
-                .oauth2(getToken())
-                .when()
-                .get("/incomes")
-                .then()
-                .statusCode(200)
-                .body("size()", equalTo(2));
+        Response response = given().auth().oauth2(getToken()).when().get("/incomes");
+        response.prettyPrint();
+        response.then().statusCode(200).body("size()", equalTo(2));
     }
 
     @Test

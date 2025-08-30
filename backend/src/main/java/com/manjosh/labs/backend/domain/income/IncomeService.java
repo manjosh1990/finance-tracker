@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,5 +64,15 @@ public class IncomeService {
         final ProfileEntity currentProfile = profileService.getCurrentProfile();
         final BigDecimal total = incomeRepository.findTotalExpenseByProfileId(currentProfile.getId());
         return total == null ? BigDecimal.ZERO : total;
+    }
+
+    @Transactional(readOnly = true)
+    public List<Income> filterIncomes(
+            final LocalDate startDate, final LocalDate endDate, final String keyword, final Sort sort) {
+        final ProfileEntity currentProfile = profileService.getCurrentProfile();
+        final List<IncomeEntity> incomeEntities =
+                incomeRepository.findByProfileIdAndTransactionDateBetweenAndNameContainingIgnoreCase(
+                        currentProfile.getId(), startDate, endDate, keyword, sort);
+        return incomeEntities.stream().map(IncomeMapper::toIncome).toList();
     }
 }

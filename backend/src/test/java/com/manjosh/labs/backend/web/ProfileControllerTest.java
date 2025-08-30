@@ -10,6 +10,7 @@ import com.manjosh.labs.backend.AbstractIT;
 import com.manjosh.labs.backend.domain.profile.Profile;
 import com.manjosh.labs.backend.domain.profile.ProfileService;
 import com.manjosh.labs.backend.utils.TestUtils;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +37,10 @@ class ProfileControllerTest extends AbstractIT {
     void registerProfile() {
         doNothing().when(mailSender).send(any(SimpleMailMessage.class));
         final Profile profile = testUtils.readJsonFromFile("profile_request.json", BASE_URL, Profile.class);
-        given().contentType("application/json")
-                .body(profile)
-                .when()
-                .post("/register")
-                .then()
+        Response response =
+                given().contentType("application/json").body(profile).when().post("/register");
+        response.prettyPrint();
+        response.then()
                 .statusCode(201)
                 .body("fullName", equalTo("John Doe"))
                 .body("email", equalTo("john.doe@example.com"))
@@ -52,11 +52,10 @@ class ProfileControllerTest extends AbstractIT {
     void activateProfile() {
         final Profile profile = testUtils.readJsonFromFile("profile_request.json", BASE_URL, Profile.class);
         final Profile savedProfile = profileService.registerProfile(profile, false);
-        given().queryParam("token", savedProfile.activationCode())
+        Response response = given().queryParam("token", savedProfile.activationCode())
                 .when()
-                .get("/activate")
-                .then()
-                .statusCode(200)
-                .body(equalTo("Profile activated successfully"));
+                .get("/activate");
+        response.prettyPrint();
+        response.then().statusCode(200).body(equalTo("Profile activated successfully"));
     }
 }

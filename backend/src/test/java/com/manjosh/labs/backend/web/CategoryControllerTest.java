@@ -17,13 +17,14 @@ class CategoryControllerTest extends AbstractIT {
     @Test
     void testSaveCategory() {
         final Category input = createTestCategory("Test Category");
-        given().contentType("application/json")
+        Response response = given().contentType("application/json")
                 .body(input)
                 .auth()
                 .oauth2(getToken())
                 .when()
-                .post("/categories")
-                .then()
+                .post("/categories");
+        response.prettyPrint();
+        response.then()
                 .statusCode(201)
                 .body("name", equalTo("Test Category"))
                 .body("id", notNullValue())
@@ -40,18 +41,15 @@ class CategoryControllerTest extends AbstractIT {
 
     @Test
     void testGetAllCategories() {
-        given().auth()
-                .oauth2(getToken())
-                .when()
-                .get("/categories")
-                .then()
-                .statusCode(200)
-                .body("size()", equalTo(5));
+        Response response = given().auth().oauth2(getToken()).when().get("/categories");
+        response.prettyPrint();
+        response.then().statusCode(200).body("size()", equalTo(5));
     }
 
     @Test
     void testGetCategoriesByType() {
         Response response = given().auth().oauth2(getToken()).when().get("/categories/EXPENSE");
+        response.prettyPrint();
         response.then().statusCode(200).body("size()", equalTo(3));
     }
 
@@ -69,13 +67,14 @@ class CategoryControllerTest extends AbstractIT {
         final Category category =
                 new Category(id, "My updated category", "updated-icon.png", "updated-type", 1L, null, null);
 
-        given().contentType("application/json")
+        Response resp = given().contentType("application/json")
                 .body(category)
                 .auth()
                 .oauth2(getToken())
                 .when()
-                .put("/categories")
-                .then()
+                .put("/categories");
+        resp.prettyPrint();
+        resp.then()
                 .statusCode(200)
                 .body("name", equalTo("My updated category"))
                 .body("icon", equalTo("updated-icon.png"))
