@@ -80,4 +80,11 @@ public class ExpenseService {
                         currentProfile.getId(), startDate, endDate, keyword, sort);
         return expenseEntities.stream().map(ExpenseMapper::toExpense).toList();
     }
+
+    @Transactional(readOnly = true)
+    public List<Expense> getExpensesForDate(final LocalDate transactionDate, final Long profileId) {
+        final List<ExpenseEntity> expenseEntities =
+                expenseRepository.findByProfileIdAndTransactionDate(profileId, transactionDate);
+        return expenseEntities.stream().map(ExpenseMapper::toExpense).toList();
+    }
 }
