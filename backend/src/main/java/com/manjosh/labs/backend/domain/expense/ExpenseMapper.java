@@ -32,6 +32,9 @@ public class ExpenseMapper {
                 expenseEntity.getCategory() != null
                         ? expenseEntity.getCategory().getId()
                         : null,
+                expenseEntity.getCategory() != null
+                        ? expenseEntity.getCategory().getName()
+                        : "NA",
                 expenseEntity.getProfile() != null ? expenseEntity.getProfile().getId() : null,
                 expenseEntity.getAmount(),
                 expenseEntity.getTransactionDate().toString(),

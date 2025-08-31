@@ -62,16 +62,16 @@ class NotificationServiceTest extends AbstractIT {
 
         // Then
         verify(emailService, times(1))
-                .sendEmail(eq("test@example.com"), eq("Your Daily Financial Summary"), anyString());
+                .sendEmail(eq("test@example.com"), eq("Xpensive: Add today's expenses"), anyString());
     }
 
     @Test
-    void buildEmailBody_ShouldReturnValidHtml() {
+    void buildNotificationEmailBody_ShouldReturnValidHtml() {
         // Given
         String userName = "Test User";
 
         // When
-        String emailBody = notificationService.buildEmailBody(userName);
+        String emailBody = notificationService.buildNotificationEmailBody(userName);
 
         // Then
         assertThat(emailBody)

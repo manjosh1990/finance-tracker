@@ -30,6 +30,7 @@ public class IncomeMapper {
                 incomeEntity.getIcon(),
                 incomeEntity.getDescription(),
                 incomeEntity.getCategory() != null ? incomeEntity.getCategory().getId() : null,
+                incomeEntity.getCategory() != null ? incomeEntity.getCategory().getName() : "NA",
                 incomeEntity.getProfile() != null ? incomeEntity.getProfile().getId() : null,
                 incomeEntity.getAmount(),
                 incomeEntity.getTransactionDate().toString(),

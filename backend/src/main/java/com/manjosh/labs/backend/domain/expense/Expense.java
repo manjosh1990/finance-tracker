@@ -9,6 +9,7 @@ public record Expense(
         String icon,
         String description,
         Long categoryId,
+        String categoryName,
         Long profileId,
         BigDecimal amount,
         String transactionDate,
