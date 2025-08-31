@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       working-directory: ./backend
+      DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/mybudget-backend
     defaults:
       run:
         working-directory: ${{ env.working-directory }}
@@ -44,4 +45,4 @@ jobs:
         name: Build and push Docker image
         run:
           ./mvnw spring-boot:build-image -DskipTests
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/mybudget-backend:latest
+          docker push $DOCKER_IMAGE_NAME
