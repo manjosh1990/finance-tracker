@@ -29,6 +29,7 @@
     <properties>
         <java.version>21</java.version>
         <spotless-maven-plugin.version>2.46.1</spotless-maven-plugin.version>
+        <dockerImageName>manjosh1990/mybudget-${project.artifactId}</dockerImageName>
     </properties>
     <dependencies>
         <dependency>
@@ -180,6 +181,11 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <!--            build docker image-->
+                    <image>
+                        <name>${dockerImageName}</name>
+                        <builder>dashaun/builder:tiny</builder>
+                    </image>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
