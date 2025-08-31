@@ -1,6 +1,5 @@
 .idea/
 .DS_Store
-backend/target/backend-0.0.1-SNAPSHOT.jar
 *.class
 /backend/target/surefire-reports
 
