@@ -3,7 +3,7 @@ name: Backend Service
 on:
   push:
     paths:
-      - backend/**
+      - '**'
     branches:
       - '**'
 
