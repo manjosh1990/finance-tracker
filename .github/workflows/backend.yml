@@ -43,6 +43,6 @@ jobs:
 
       - if: ${{ github.ref == 'refs/heads/main' }}
         name: Build and push Docker image
-        run:
+        run: |
           ./mvnw spring-boot:build-image -DskipTests
           docker push $DOCKER_IMAGE_NAME
