@@ -1,0 +1,13 @@
+com/manjosh/labs/backend/web/IncomeControllerTest.class
+com/manjosh/labs/backend/TestBackendApplication.class
+com/manjosh/labs/backend/domain/NotificationServiceTest.class
+com/manjosh/labs/backend/web/AuthControllerTest.class
+com/manjosh/labs/backend/TestcontainersConfiguration.class
+com/manjosh/labs/backend/web/CategoryControllerTest.class
+com/manjosh/labs/backend/web/DashboardControllerTest.class
+com/manjosh/labs/backend/AbstractIT.class
+com/manjosh/labs/backend/web/ProfileControllerTest.class
+com/manjosh/labs/backend/BackendApplicationTests.class
+com/manjosh/labs/backend/web/FilterControllerTest.class
+com/manjosh/labs/backend/web/ExpenseControllerTest.class
+com/manjosh/labs/backend/NoOpEmailService.class

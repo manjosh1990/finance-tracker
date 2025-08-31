@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "jwt",
+      "type": "com.manjosh.labs.backend.domain.authentication.JwtProperties",
+      "sourceType": "com.manjosh.labs.backend.domain.authentication.JwtProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jwt.expiration-in-ms",
+      "type": "java.lang.Long",
+      "sourceType": "com.manjosh.labs.backend.domain.authentication.JwtProperties",
+      "defaultValue": 0
+    },
+    {
+      "name": "jwt.refresh-expiration-in-ms",
+      "type": "java.lang.Long",
+      "sourceType": "com.manjosh.labs.backend.domain.authentication.JwtProperties",
+      "defaultValue": 0
+    },
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "sourceType": "com.manjosh.labs.backend.domain.authentication.JwtProperties"
+    }
+  ],
+  "hints": [],
+  "ignored": {
+    "properties": []
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Groceries",
+  "icon": "💰",
+  "category": "Groceries",
+  "description": "Monthly groceries",
+  "categoryId": 2,
+  "amount": 5000.00,
+  "transactionDate": "2025-08-24"
+}

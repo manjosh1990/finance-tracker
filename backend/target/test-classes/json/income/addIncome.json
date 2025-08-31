@@ -1,0 +1,9 @@
+{
+  "name": "Salary",
+  "icon": "💰",
+  "category": "Salary",
+  "description": "Monthly Salary",
+  "categoryId": 3,
+  "amount": 50000.00,
+  "transactionDate": "2025-08-20"
+}

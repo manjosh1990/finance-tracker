@@ -1,0 +1,13 @@
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/AbstractIT.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/BackendApplicationTests.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/NoOpEmailService.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/TestBackendApplication.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/TestcontainersConfiguration.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/domain/NotificationServiceTest.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/web/AuthControllerTest.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/web/CategoryControllerTest.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/web/DashboardControllerTest.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/web/ExpenseControllerTest.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/web/FilterControllerTest.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/web/IncomeControllerTest.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/test/java/com/manjosh/labs/backend/web/ProfileControllerTest.java
