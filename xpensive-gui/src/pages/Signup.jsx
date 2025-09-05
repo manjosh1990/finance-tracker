@@ -12,24 +12,24 @@ const Signup = () => {
 
     const navigate = useNavigate();
     return (
-        <div className="h-screen w-full relative flex items-center justify-center overflow-hidden">
+        <div className="min-h-svh w-full relative flex items-center justify-center overflow-hidden px-4 sm:px-6">
             {/*/!*Background Image*!/*/}
             {/*<img src="" alt="" className="absolute inset-0 w-full h-full object-cover filter blur-sm"/>*/}
-            <div className="relative z-10 w-full max-w-lg px-6">
+            <div className="relative z-10 w-full max-w-lg px-0 sm:px-6">
                 <div
-                    className="rounded-lg p-[2px] bg-brand-gradient shadow-2xl max-h-[90vh] overflow-y-auto">
-                    <div className="rounded-lg p-8 bg-bg">
-                        <h3 className="text-2xl font-semibold text-center mb-2 text-gradient">
+                    className="rounded-xl sm:rounded-2xl p-[1.5px] sm:p-[2px] bg-brand-gradient shadow-xl sm:shadow-2xl sm:max-h-[90vh] sm:overflow-y-auto">
+                    <div className="rounded-xl sm:rounded-2xl p-4 sm:p-8 bg-bg">
+                        <h3 className="text-xl sm:text-2xl font-semibold text-center mb-2 text-gradient">
                             Create Account
                         </h3>
-                        <p className="text-sm text-center mb-8 text-gradient">
+                        <p className="text-sm sm:text-base text-center mb-6 sm:mb-8 text-gradient">
                             Stay on top of your finances with our user-friendly platform.
                         </p>
-                        <form className="space-y-4 ">
-                            <div className="flex justify-center mb-6">
+                        <form className="space-y-4">
+                            <div className="flex justify-center mb-4 sm:mb-6">
                                 {/*profile picture*/}
                             </div>
-                            <div className="grid grid-cols-2 gap-4 md:grid-cols-2">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                 <Input
                                     value={fullName}
                                     onChange={(e) => setFullName(e.target.value)}
@@ -44,7 +44,7 @@ const Signup = () => {
                                     placeholder="Enter your email"
                                     type="text"
                                 />
-                                <div className="col-span-2">
+                                <div className="sm:col-span-2 space-y-4">
                                     <Input
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
@@ -65,21 +65,17 @@ const Signup = () => {
                                 {error && (
                                     <p className="text-red-800 text-sm text-center bg-red-50 p-2 rounded">{error}</p>
                                 )}
-                                <button className="btn-primary w-full py-3 text-lg font-medium">Sign Up</button>
-                                <p className="text-sm text-gradient text-center mt-6">
+                                <button className="btn-primary w-full py-3 sm:py-3.5 text-base sm:text-lg font-medium">Sign Up</button>
+                                <p className="text-sm sm:text-base text-gradient text-center mt-4 sm:mt-6">
                                     Already have an account? <a href="/login" className="font-medium text-brand-pink hover:underline">Login</a>
                                 </p>
-
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
     )
-
-
 }
 
 export default Signup
