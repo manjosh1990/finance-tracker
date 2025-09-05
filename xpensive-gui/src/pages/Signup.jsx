@@ -2,6 +2,10 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Input from "../components/Input.jsx";
 import {validateEmail} from "../util/validation.js";
+import axiosConfig from "../util/axiosConfig.js";
+import {API_ENDPOINTS} from "../util/apiEndpoints.js";
+import toast from "react-hot-toast";
+import {LoaderCircle} from "lucide-react";
 
 const Signup = () => {
 
@@ -10,6 +14,7 @@ const Signup = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
 // ... existing code ...
     const navigate = useNavigate();
@@ -43,7 +48,7 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setLoading(true);
         const { error: validationError, data } = validateSignup({
             fullName,
             email,
@@ -52,6 +57,7 @@ const Signup = () => {
         });
 
         if (validationError) {
+            setLoading(false);
             return setError(validationError);
         }
 
@@ -60,6 +66,25 @@ const Signup = () => {
         // await api.signup({ name: data.name, email: data.mail, password });
         // navigate("/dashboard");
         console.log("Form valid. Submit here.", data);
+        try {
+          const res =  await axiosConfig.post(API_ENDPOINTS.SIGNUP, {
+                fullName,
+                email,
+                password
+            })
+            console.log(res)
+            if(res.status === 201){
+                toast.success("Profile created successfully")
+                navigate("/login");
+            }
+        }catch (err){
+            console.log(err)
+            toast.error("Something went wrong",err)
+            setError(err.message);
+        }
+        finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -126,8 +151,16 @@ const Signup = () => {
                                 {error && (
                                     <p className="text-red-800 text-sm text-center bg-red-50 p-2 mb-2 rounded">{error}</p>
                                 )}
-                                <button type="submit" className="btn-primary w-full py-3 sm:py-3.5 text-base sm:text-lg font-medium">
-                                    Sign Up
+                                <button type="submit" className={`btn-primary w-full py-3 sm:py-3.5 text-base sm:text-lg font-medium flex items-center justify-center gap-2 ${loading?'opacity-60 cursor-not-allowed':''}`} disabled={loading}>
+                                    {loading? (
+                                        <>
+                                            <LoaderCircle className="animate-spin w-5 h-5"/>
+                                        </>
+                                    ):(
+                                        <>
+                                            SIGN UP
+                                        </>
+                                    )}
                                 </button>
                                 <p className="text-sm sm:text-base text-gradient text-center mt-4 sm:mt-6">
                                     Already have an account? <a href="/login" className="font-medium text-brand-pink hover:underline">Login</a>
