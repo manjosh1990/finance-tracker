@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Input from "../components/Input.jsx";
+import {validateEmail} from "../util/validation.js";
 
 const Signup = () => {
 
@@ -17,7 +18,6 @@ const Signup = () => {
         const name = fullName.trim();
         const mail = email.trim();
 
-        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const hasMinLen = password.length >= 8;
         const hasLetter = /[A-Za-z]/.test(password);
         const hasNumber = /\d/.test(password);
@@ -25,7 +25,7 @@ const Signup = () => {
         if (!name) {
             return { error: "Please enter your full name." };
         }
-        if (!mail || !emailRe.test(mail)) {
+        if (!mail || !validateEmail(mail)) {
             return { error: "Please enter a valid email address." };
         }
         if (!hasMinLen) {
@@ -41,7 +41,7 @@ const Signup = () => {
         return { error: null, data: { name, mail } };
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const { error: validationError, data } = validateSignup({
