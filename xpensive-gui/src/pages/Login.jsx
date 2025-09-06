@@ -48,8 +48,8 @@ const Login = () => {
             }
         } catch (err) {
             console.log("error in login ", err);
-            if (err.response && err.response.data.message) {
-                setError(err.response.data.message);
+            if (err.response && err.response.data.detail) {
+                setError(err.response.data.detail);
             } else {
                 setError("Something went wrong");
             }
@@ -84,7 +84,6 @@ const Login = () => {
                                     placeholder="Enter your email"
                                     type="email"
                                     required
-                                    autoComplete="email"
                                 />
                                 <div className="sm:col-span-2 space-y-4">
                                     <Input
@@ -94,8 +93,6 @@ const Login = () => {
                                         placeholder="Enter your password"
                                         type="password"
                                         required
-                                        minLength={8}
-                                        autoComplete="new-password"
                                     />
                                 </div>
                             </div>

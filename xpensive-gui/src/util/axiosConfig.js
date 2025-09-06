@@ -28,10 +28,21 @@ axiosConfig.interceptors.request.use(config => {
 axiosConfig.interceptors.response.use(response => {
     return response;
 }, (error) => {
+    const reqUrl = error.config?.url;
     if (error.response) {
-        if (error.response.status === 401) {
-            window.location.href = "/login";
-        } else if (error.response.status === 500) {
+        console.log("Error response:", error.response);
+        const status = error.response.status;
+
+        // Avoid redirecting for excluded endpoints like /login so the UI can show the error message
+        const isExcluded = excludeEndpoint.includes(reqUrl);
+
+        if (status === 401) {
+            if (!isExcluded && window.location.pathname !== "/login") {
+                // Likely an expired/invalid session on a protected route
+                window.location.href = "/login?session=expired";
+            }
+            // If it's an excluded endpoint (e.g., /login), let the caller handle and display the error
+        } else if (status === 500) {
             console.log("Internal server error");
         }
     } else if (error.code === "ECONNABORTED" || error.message === "Network Error") {

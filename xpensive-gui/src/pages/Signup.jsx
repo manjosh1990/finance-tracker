@@ -6,6 +6,8 @@ import axiosConfig from "../util/axiosConfig.js";
 import {API_ENDPOINTS} from "../util/apiEndpoints.js";
 import toast from "react-hot-toast";
 import {LoaderCircle} from "lucide-react";
+import ProfilePhotoSelector from "../components/ProfilePhotoSelector.jsx";
+import uploadProfileImg from "../util/uploadProfileImg.js";
 
 const Signup = () => {
 
@@ -15,82 +17,83 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [profilePhoto, setProfilePhoto] = useState(null);
 
-// ... existing code ...
     const navigate = useNavigate();
 
-    const validateSignup = ({ fullName, email, password, confirmPassword }) => {
+    const validateSignup = ({fullName, email, password, confirmPassword}) => {
         const name = fullName.trim();
         const mail = email.trim();
-
         const hasMinLen = password.length >= 8;
         const hasLetter = /[A-Za-z]/.test(password);
         const hasNumber = /\d/.test(password);
 
         if (!name) {
-            return { error: "Please enter your full name." };
+            return {error: "Please enter your full name."};
         }
         if (!mail || !validateEmail(mail)) {
-            return { error: "Please enter a valid email address." };
+            return {error: "Please enter a valid email address."};
         }
         if (!hasMinLen) {
-            return { error: "Password must be at least 8 characters long." };
+            return {error: "Password must be at least 8 characters long."};
         }
         if (!(hasLetter && hasNumber)) {
-            return { error: "Password must include letters and numbers." };
+            return {error: "Password must include letters and numbers."};
         }
         if (password !== confirmPassword) {
-            return { error: "Passwords do not match." };
+            return {error: "Passwords do not match."};
         }
-
-        return { error: null, data: { name, mail } };
+        return {error: null, data: {name, mail}};
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        const { error: validationError, data } = validateSignup({
+
+        let profileImageUrl = null;
+
+        const {error: validationError, data} = validateSignup({
             fullName,
             email,
             password,
             confirmPassword,
         });
-
         if (validationError) {
             setLoading(false);
             return setError(validationError);
         }
-
         setError("");
-        // Call your backend API here with data.name and data.mail (and password)
-        // await api.signup({ name: data.name, email: data.mail, password });
-        // navigate("/dashboard");
+
         console.log("Form valid. Submit here.", data);
         try {
-          const res =  await axiosConfig.post(API_ENDPOINTS.SIGNUP, {
+            //upload profile photo if present
+            if (profilePhoto) {
+                const imageUrl = await uploadProfileImg(profilePhoto);
+                profileImageUrl = imageUrl || "";
+            }
+            const res = await axiosConfig.post(API_ENDPOINTS.SIGNUP, {
                 fullName,
                 email,
-                password
+                password,
+                profileImageUrl
             })
             console.log(res)
-            if(res.status === 201){
+            if (res.status === 201) {
                 toast.success("Profile created successfully")
                 navigate("/login");
             }
-        }catch (err){
+        } catch (err) {
             console.log(err)
-            toast.error("Something went wrong",err)
+            toast.error("Something went wrong", err)
             setError(err.message);
-        }
-        finally {
+        } finally {
             setLoading(false);
         }
     };
 
     return (
         <div className="min-h-svh w-full relative flex items-center justify-center overflow-hidden px-4 sm:px-6">
-            {/*/!*Background Image*!/*/}
-            {/*<img src="" alt="" className="absolute inset-0 w-full h-full object-cover filter blur-sm"/>*/}
+
             <div className="relative z-10 w-full max-w-lg px-0 sm:px-6">
                 <div
                     className="rounded-xl sm:rounded-2xl p-[1.5px] sm:p-[2px] bg-brand-gradient shadow-xl sm:shadow-2xl sm:max-h-[90vh] sm:overflow-y-auto">
@@ -103,7 +106,7 @@ const Signup = () => {
                         </p>
                         <form className="space-y-4" onSubmit={handleSubmit}>
                             <div className="flex justify-center mb-4 sm:mb-6">
-                                {/*profile picture*/}
+                                <ProfilePhotoSelector image={profilePhoto} setImage={setProfilePhoto}/>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                 <Input
@@ -113,7 +116,6 @@ const Signup = () => {
                                     placeholder="Enter your full name"
                                     type="text"
                                     required
-                                    autoComplete="name"
                                 />
                                 <Input
                                     value={email}
@@ -122,7 +124,6 @@ const Signup = () => {
                                     placeholder="Enter your email"
                                     type="email"
                                     required
-                                    autoComplete="email"
                                 />
                                 <div className="sm:col-span-2 space-y-4">
                                     <Input
@@ -132,8 +133,6 @@ const Signup = () => {
                                         placeholder="Enter your password"
                                         type="password"
                                         required
-                                        minLength={8}
-                                        autoComplete="new-password"
                                     />
                                     <Input
                                         value={confirmPassword}
@@ -142,8 +141,6 @@ const Signup = () => {
                                         placeholder="Re-enter your password"
                                         type="password"
                                         required
-                                        minLength={8}
-                                        autoComplete="new-password"
                                     />
                                 </div>
                             </div>
@@ -151,19 +148,22 @@ const Signup = () => {
                                 {error && (
                                     <p className="text-red-800 text-sm text-center bg-red-50 p-2 mb-2 rounded">{error}</p>
                                 )}
-                                <button type="submit" className={`btn-primary w-full py-3 sm:py-3.5 text-base sm:text-lg font-medium flex items-center justify-center gap-2 ${loading?'opacity-60 cursor-not-allowed':''}`} disabled={loading}>
-                                    {loading? (
+                                <button type="submit"
+                                        className={`btn-primary w-full py-3 sm:py-3.5 text-base sm:text-lg font-medium flex items-center justify-center gap-2 ${loading ? 'opacity-60 cursor-not-allowed' : ''}`}
+                                        disabled={loading}>
+                                    {loading ? (
                                         <>
                                             <LoaderCircle className="animate-spin w-5 h-5"/>
                                         </>
-                                    ):(
+                                    ) : (
                                         <>
                                             SIGN UP
                                         </>
                                     )}
                                 </button>
                                 <p className="text-sm sm:text-base text-gradient text-center mt-4 sm:mt-6">
-                                    Already have an account? <a href="/login" className="font-medium text-brand-pink hover:underline">Login</a>
+                                    Already have an account? <a href="/login"
+                                                                className="font-medium text-brand-pink hover:underline">Login</a>
                                 </p>
                             </div>
                         </form>
