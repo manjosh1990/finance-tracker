@@ -2,7 +2,7 @@ import Dashboard from "../components/Dashboard.jsx";
 
 const Income = () => {
     return <div>
-        <Dashboard>
+        <Dashboard activeMenu="Income">
             This is Income page
         </Dashboard>
     </div>

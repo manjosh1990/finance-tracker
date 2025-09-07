@@ -4,7 +4,7 @@ import {User} from "lucide-react";
 import {SIDEBAR_DATA} from "../assets/assets.js";
 import {useNavigate} from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({activeMenu}) => {
     const {user} = useContext(AppContext);
     const navigate = useNavigate();
 
@@ -33,8 +33,10 @@ const Sidebar = () => {
                     SIDEBAR_DATA.map((item, index) => (
                         <button
                             onClick={() => navigate(item.path)}
-                            key={index} className="flex items-center gap-4 w-full text-[15px] text-brand-pink
-                         py-3 px-8 rounded-lg hover:bg-brand-purple/20 cursor-pointer">
+                            key={index} className={`flex items-center gap-4 w-full text-[15px] text-brand-pink
+                         py-3 px-8 rounded-lg hover:bg-brand-purple/20 cursor-pointer
+                         ${activeMenu === item.title && 'bg-brand-purple/20'}
+                         `}>
                             <item.icon className="text-xl "/>
                            <span className="flex justify-items-center pl-5">{item.title}</span>
                         </button>

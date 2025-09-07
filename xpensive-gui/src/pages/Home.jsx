@@ -3,7 +3,7 @@ import Dashboard from "../components/Dashboard.jsx";
 const Home = () =>{
     return (
         <div>
-            <Dashboard>
+            <Dashboard activeMenu="Dashboard">
                 This is home page
             </Dashboard>
         </div>

@@ -5,7 +5,7 @@ import {LogOut, Menu, User, X} from "lucide-react";
 import Sidebar from "./Sidebar.jsx";
 import {assets} from "../assets/assets.js";
 
-const MenuBar = () => {
+const MenuBar = ({activeMenu}) => {
 
     const [openSidebar, setOpenSidebar] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
@@ -97,7 +97,7 @@ const MenuBar = () => {
                     <div className="fixed left-0 right-0 bottom-0 border-b border-gray-200 z-20
                         lg:hidden top-[73px]
                     ">
-                    <Sidebar/>
+                    <Sidebar activeMenu={activeMenu} />
                     </div>
                 )}
                 <div

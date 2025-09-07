@@ -1,14 +1,14 @@
 import MenuBar from "./MenuBar.jsx";
 import Sidebar from "./Sidebar.jsx";
 
-const Dashboard = ({children}) => {
+const Dashboard = ({children,activeMenu}) => {
     return (
         <div>
-            <MenuBar/>
+            <MenuBar activeMenu={activeMenu}/>
             <div className="flex">
                 <div className="max-[1080px]:hidden">
                     {/*sidebar*/}
-                    <Sidebar/>
+                    <Sidebar activeMenu={activeMenu}/>
                 </div>
                 <div className="grow mx-5">
                     {children}
