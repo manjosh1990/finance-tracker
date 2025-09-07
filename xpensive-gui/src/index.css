@@ -16,6 +16,14 @@
   .bg-brand-gradient {
     background-image: var(--gradient-brand);
   }
+  .text-bg {
+    color: var(--color-bg);
+  }
+  /* Gradient border utility for outlines */
+  .border-gradient {
+    border: 1px solid transparent;
+    border-image: var(--gradient-brand) 1;
+  }
 }
 @layer components {
   .btn-primary {
