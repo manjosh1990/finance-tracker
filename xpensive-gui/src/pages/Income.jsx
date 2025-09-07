@@ -1,2 +1,10 @@
-const Income = () => <h1>Income</h1>
+import Dashboard from "../components/Dashboard.jsx";
+
+const Income = () => {
+    return <div>
+        <Dashboard>
+            This is Income page
+        </Dashboard>
+    </div>
+}
 export default Income;

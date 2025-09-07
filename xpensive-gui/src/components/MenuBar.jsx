@@ -2,6 +2,7 @@ import {useContext, useRef, useState} from "react";
 import {AppContext} from "../context/AppContext.jsx";
 import {useNavigate} from "react-router-dom";
 import {LogOut, Menu, User, X} from "lucide-react";
+import Sidebar from "./Sidebar.jsx";
 import {assets} from "../assets/assets.js";
 
 const MenuBar = () => {
@@ -92,8 +93,13 @@ const MenuBar = () => {
 
                 </div>
                 {/**Mobile view*/}
-                <span>mobile</span>
-                {/* bottom-only gradient line */}
+                {openSidebar && (
+                    <div className="fixed left-0 right-0 bottom-0 border-b border-gray-200 z-20
+                        lg:hidden top-[73px]
+                    ">
+                    <Sidebar/>
+                    </div>
+                )}
                 <div
                     className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-brand-pink to-brand-purple/90"></div>
             </div>
