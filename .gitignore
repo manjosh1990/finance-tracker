@@ -5,3 +5,4 @@
 
 /backend/logs
 /target
+/backend/src/main/java/com/manjosh/labs/backend/logs
