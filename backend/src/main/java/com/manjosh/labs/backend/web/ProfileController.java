@@ -41,4 +41,10 @@ class ProfileController {
     public String test() {
         return "test success";
     }
+
+    @GetMapping("/profile")
+    public ResponseEntity<Profile> getProfile(){
+        Profile publicProfile = profileService.getPublicProfile(null);
+        return ResponseEntity.ok(publicProfile);
+    }
 }

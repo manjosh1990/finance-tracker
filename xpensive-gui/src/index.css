@@ -34,6 +34,9 @@
            disabled:opacity-50 disabled:cursor-not-allowed;
   }
 }
+* {
+    box-sizing: border-box;
+}
 body{
     font-family: 'Outfit', sans-serif;
     overflow-x: hidden;

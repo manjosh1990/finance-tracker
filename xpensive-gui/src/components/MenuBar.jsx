@@ -1,4 +1,4 @@
-import {useContext, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {AppContext} from "../context/AppContext.jsx";
 import {useNavigate} from "react-router-dom";
 import {LogOut, Menu, User, X} from "lucide-react";
@@ -19,6 +19,20 @@ const MenuBar = ({activeMenu}) => {
         setShowDropdown(false)
         navigate("/login");
     }
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropDownRef.current && !dropDownRef.current.contains(event.target)) {
+                setShowDropdown(false);
+            }
+        };
+        if(showDropdown) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+    }, [showDropdown])
     return (
 
         <div className="sticky top-0 z-30">
@@ -101,7 +115,7 @@ const MenuBar = ({activeMenu}) => {
                     </div>
                 )}
                 <div
-                    className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-brand-pink to-brand-purple/90"></div>
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-brand-pink to-brand-purple/90"></div>
             </div>
         </div>
     )

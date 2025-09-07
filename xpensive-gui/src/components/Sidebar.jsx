@@ -10,7 +10,7 @@ const Sidebar = ({activeMenu}) => {
 
     return (
         <div className="w-64 h-[calc(100vh-61px)] bg-[var(--color-bg)] sticky top-[61px] z-20">
-            <div className="flex flex-col items-center justify-center gap-3 mt-0 mb-7">
+            <div className="flex flex-col items-center justify-center gap-3 mt-1 mb-7">
                 {user?.profileImageUrl ? (
                     <img
                         src={user.profileImageUrl}

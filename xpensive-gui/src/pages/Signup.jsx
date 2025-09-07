@@ -95,6 +95,7 @@ const Signup = () => {
         <div className="min-h-svh w-full relative flex items-center justify-center overflow-hidden px-4 sm:px-6">
 
             <div className="relative z-10 w-full max-w-lg px-0 sm:px-6">
+                <h2 className="flex justify-center text-2xl sm:text-6xl font-semibold text-center mb-2 pb-4 text-gradient">Xpensive</h2>
                 <div
                     className="rounded-xl sm:rounded-2xl p-[1.5px] sm:p-[2px] bg-brand-gradient shadow-xl sm:shadow-2xl sm:max-h-[90vh] sm:overflow-y-auto">
                     <div className="rounded-xl sm:rounded-2xl p-4 sm:p-8 bg-bg">

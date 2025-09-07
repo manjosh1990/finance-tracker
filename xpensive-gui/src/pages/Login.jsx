@@ -59,12 +59,15 @@ const Login = () => {
     }
 
     return (
-        <div className="min-h-svh w-full relative flex items-center justify-center overflow-hidden px-4 sm:px-6">
+        <div className="min-h-svh w-full relative flex items-center justify-around overflow-hidden px-4 sm:px-6">
             {/*/!*Background Image*!/*/}
             {/*<img src="" alt="" className="absolute inset-0 w-full h-full object-cover filter blur-sm"/>*/}
+            <h2 className="flex justify-center text-2xl sm:text-6xl font-semibold text-center text-gradient pr-6">Xpensive</h2>
             <div className="relative z-10 w-full max-w-lg px-0 sm:px-6">
+
                 <div
                     className="rounded-xl sm:rounded-2xl p-[1.5px] sm:p-[2px] bg-brand-gradient shadow-xl sm:shadow-2xl sm:max-h-[90vh] sm:overflow-y-auto">
+
                     <div className="rounded-xl sm:rounded-2xl p-4 sm:p-8 bg-bg">
                         <h3 className="text-xl sm:text-2xl font-semibold text-center mb-2 text-gradient">
                             Sign in to your account
@@ -122,6 +125,17 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+
+            <footer
+                role="contentinfo"
+                className="absolute inset-x-0 bottom-3 z-10 flex items-center justify-center px-4"
+            >
+                <p className="text-xs sm:text-sm text-gradient text-center">
+                    © {new Date().getFullYear()} Xpensive ·
+                    <a href="/terms" className="ml-1 underline hover:no-underline">Terms</a> ·
+                    <a href="/privacy" className="ml-1 underline hover:no-underline">Privacy</a>
+                </p>
+            </footer>
         </div>
     )
 }
