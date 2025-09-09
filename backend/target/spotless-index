@@ -43,7 +43,7 @@ src/main/java/com/manjosh/labs/backend/web/ExpenseController.java 2025-08-27T14:
 src/main/java/com/manjosh/labs/backend/web/FilterController.java 2025-08-30T08:23:08.117844150Z
 src/main/java/com/manjosh/labs/backend/web/HomeController.java 2025-08-15T15:22:56.222485362Z
 src/main/java/com/manjosh/labs/backend/web/IncomeController.java 2025-08-27T14:40:42.161192889Z
-src/main/java/com/manjosh/labs/backend/web/ProfileController.java 2025-08-19T15:01:41.911214291Z
+src/main/java/com/manjosh/labs/backend/web/ProfileController.java 2025-09-09T14:52:20.752114522Z
 src/main/java/com/manjosh/labs/backend/web/exception/AuthenticationFailedException.java 2025-08-19T14:59:41.135439563Z
 src/main/java/com/manjosh/labs/backend/web/exception/CategoryException.java 2025-08-19T15:56:04.868779380Z
 src/main/java/com/manjosh/labs/backend/web/exception/GlobalExceptionHandler.java 2025-08-24T15:13:41.726023578Z

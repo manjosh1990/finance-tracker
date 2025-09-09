@@ -43,7 +43,7 @@ class ProfileController {
     }
 
     @GetMapping("/profile")
-    public ResponseEntity<Profile> getProfile(){
+    public ResponseEntity<Profile> getProfile() {
         Profile publicProfile = profileService.getPublicProfile(null);
         return ResponseEntity.ok(publicProfile);
     }
