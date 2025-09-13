@@ -32,6 +32,7 @@ src/main/java/com/manjosh/labs/backend/domain/profile/ProfileRepository.java 202
 src/main/java/com/manjosh/labs/backend/domain/profile/ProfileService.java 2025-08-19T15:57:19.568859234Z
 src/main/java/com/manjosh/labs/backend/securityconfig/CustomUserDetailsService.java 2025-08-19T15:03:06.307092876Z
 src/main/java/com/manjosh/labs/backend/securityconfig/JwtRequestFilter.java 2025-08-19T15:03:06.295522645Z
+src/main/java/com/manjosh/labs/backend/securityconfig/OpenApiConfig.java 2025-09-09T15:23:23.514047527Z
 src/main/java/com/manjosh/labs/backend/securityconfig/SecurityConfig.java 2025-09-05T15:42:20.339949309Z
 src/main/java/com/manjosh/labs/backend/utils/JwtUtil.java 2025-08-19T14:59:43.862854219Z
 src/main/java/com/manjosh/labs/backend/utils/PasswordEncoderSingleTon.java 2025-08-17T15:06:53.843122605Z

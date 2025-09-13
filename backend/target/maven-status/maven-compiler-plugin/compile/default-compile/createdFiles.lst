@@ -29,6 +29,7 @@ com/manjosh/labs/backend/domain/categories/CategoryEntity.class
 com/manjosh/labs/backend/web/HomeController.class
 com/manjosh/labs/backend/web/DashboardController.class
 com/manjosh/labs/backend/domain/categories/CategoryService.class
+com/manjosh/labs/backend/securityconfig/OpenApiConfig.class
 com/manjosh/labs/backend/domain/NotificationService.class
 com/manjosh/labs/backend/domain/authentication/Auth.class
 com/manjosh/labs/backend/domain/profile/PagedResult.class

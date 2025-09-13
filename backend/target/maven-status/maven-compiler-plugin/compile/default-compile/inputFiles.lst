@@ -31,6 +31,7 @@
 /Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/main/java/com/manjosh/labs/backend/domain/profile/ProfileService.java
 /Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/main/java/com/manjosh/labs/backend/securityconfig/CustomUserDetailsService.java
 /Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/main/java/com/manjosh/labs/backend/securityconfig/JwtRequestFilter.java
+/Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/main/java/com/manjosh/labs/backend/securityconfig/OpenApiConfig.java
 /Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/main/java/com/manjosh/labs/backend/securityconfig/SecurityConfig.java
 /Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/main/java/com/manjosh/labs/backend/utils/JwtUtil.java
 /Users/manjoshramesh/my_projects/finance-tracker/finance-tracker/backend/src/main/java/com/manjosh/labs/backend/utils/PasswordEncoderSingleTon.java
