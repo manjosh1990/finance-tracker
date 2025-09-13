@@ -8,4 +8,5 @@ export const API_ENDPOINTS = {
     UPLOAD_IMAGE: `https://api.cloudinary.com/v1_1/${CLOUDINARY_NAME}/image/upload`,
     GET_USER_INFO: "/profile",
     GET_ALL_CATEGORIES: "/categories",
+    REFRESH_TOKEN: "/refresh",
 }

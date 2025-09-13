@@ -25,6 +25,7 @@ com/manjosh/labs/backend/securityconfig/CustomUserDetailsService.class
 com/manjosh/labs/backend/web/ExpenseController.class
 com/manjosh/labs/backend/domain/income/IncomeService.class
 com/manjosh/labs/backend/BackendApplication.class
+com/manjosh/labs/backend/securityconfig/JwtAuthenticationEntryPoint.class
 com/manjosh/labs/backend/domain/categories/CategoryEntity.class
 com/manjosh/labs/backend/web/HomeController.class
 com/manjosh/labs/backend/web/DashboardController.class

@@ -39,9 +39,11 @@ const Login = () => {
             });
             console.log(res);
             if (res.status === 200) {
-                const {token, user} = res.data;
+                const {token, user,refreshToken} = res.data;
                 if (token) {
                     localStorage.setItem("token", token);
+                    localStorage.setItem("user", JSON.stringify(user));
+                    localStorage.setItem("refreshToken",refreshToken)
                     setUser(user);
                     navigate("/dashboard");
                 }
