@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 import axiosConfig from "../util/axiosConfig.js";
 import {API_ENDPOINTS} from "../util/apiEndpoints.js";
 import toast from "react-hot-toast";
+import Model from "../components/Model.jsx";
+import AddCategoryForm from "../components/AddCategoryForm.jsx";
 
 const Category = () => {
     useUser();
@@ -43,7 +45,9 @@ const Category = () => {
                     <h2 className="text-2xl font-semibold text-brand-pink">
                         All Categories
                     </h2>
-                    <button className="add-btn flex items-center gap-1 text-sm text-brand-pink">
+                    <button
+                        onClick={() => setShowAddCategoryModal(true)}
+                        className="add-btn flex items-center gap-1 text-sm text-brand-pink">
                         <Plus size={15} className="text-brand-pink"/>
                         Add Category
                     </button>
@@ -51,6 +55,13 @@ const Category = () => {
                 {/*category list*/}
                 <CategoryList categories={categories}/>
                 {/*adding category modal*/}
+                <Model
+                title="Add Category"
+                isOpen={showAddCategoryModal}
+                onClose={() => setShowAddCategoryModal(false)}
+                >
+                    <AddCategoryForm/>
+                </Model>
             </div>
         </Dashboard>)
 }
