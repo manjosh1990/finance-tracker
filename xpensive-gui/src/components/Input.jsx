@@ -34,7 +34,7 @@ const Input = ({label, value, onChange, placeholder, type, isSelect, options}) =
                         value={value}
                         onChange={(e) => onChange(e)}
                         placeholder={placeholder}
-                        className="w-full bg-transparent text-ink placeholder-ink/60 placeholder:text-xs border border-brand-purple/40 rounded-md py-2 px-3 pr-10 leading-tight focus:outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/60"
+                        className="w-full bg-transparent text-brand-pink placeholder-brand-pink placeholder:text-xs border border-brand-purple/40 rounded-md py-2 px-3 pr-10 leading-tight focus:outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/60"
                     />
                 )}
                 {type === "password" && (

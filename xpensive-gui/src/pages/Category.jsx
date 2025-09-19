@@ -17,6 +17,32 @@ const Category = () => {
     const [showEditCategoryModal, setShowEditCategoryModal] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
 
+    const handleAddCategory = async (category) => {
+        const {name, type, icon} = category;
+        if(!name.trim()){
+            toast.error("Category name is required")
+            return
+        }
+       const isCategoryPresent = categories.some((category) =>{
+            return category.name.toLowerCase() === name.toLowerCase();
+        })
+        if(isCategoryPresent){
+            toast.error("Category already exists")
+            return
+        }
+        try {
+            const res = await axiosConfig.post(API_ENDPOINTS.ADD_CATEGORIES, {name, type, icon})
+            if (res.status === 201) {
+                toast.success("Category added successfully");
+                fetchCategories();
+                setShowAddCategoryModal(false);
+            }
+        }
+        catch (error) {
+            console.log("error while adding category", error);
+            toast.error(error.response?.data?.detail || "error while adding category")
+        }
+    }
     const fetchCategories = async () => {
         if (loading) return;
         setLoading(true);
@@ -60,7 +86,7 @@ const Category = () => {
                 isOpen={showAddCategoryModal}
                 onClose={() => setShowAddCategoryModal(false)}
                 >
-                    <AddCategoryForm/>
+                    <AddCategoryForm onAddCategory={handleAddCategory}/>
                 </Model>
             </div>
         </Dashboard>)
