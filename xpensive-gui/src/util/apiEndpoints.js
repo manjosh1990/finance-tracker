@@ -1,6 +1,6 @@
-export const BASE_URL ="http://localhost:18080/api/v1.0"
+export const BASE_URL = "http://localhost:18080/api/v1.0"
 
-const CLOUDINARY_NAME="dfgel8gmi"
+const CLOUDINARY_NAME = "dfgel8gmi"
 
 export const API_ENDPOINTS = {
     LOGIN: "/login",
@@ -9,5 +9,7 @@ export const API_ENDPOINTS = {
     GET_USER_INFO: "/profile",
     GET_ALL_CATEGORIES: "/categories",
     ADD_CATEGORIES: "/categories",
+    UPDATE_CATEGORIES: "/categories",
+    // UPDATE_CATEGORIES: (id) => `/categories/${id}`,
     REFRESH_TOKEN: "/refresh",
 }

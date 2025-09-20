@@ -7,6 +7,7 @@ public class CategoryMapper {
 
     public static CategoryEntity toEntity(final Category category, final ProfileEntity profile) {
         return CategoryEntity.builder()
+                .id(category.id())
                 .name(category.name())
                 .icon(category.icon())
                 .profile(profile)

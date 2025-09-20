@@ -1,6 +1,6 @@
 import {Layers2, Pencil} from "lucide-react";
 
-const CategoryList = ({categories, onEditCategory, OnDeleteCategory}) => {
+const CategoryList = ({categories, onEditCategory}) => {
     return (
         <div className="card p-4">
             <div className="flex items-center justify-between mb-4">
@@ -37,7 +37,9 @@ const CategoryList = ({categories, onEditCategory, OnDeleteCategory}) => {
                                             </p>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <button className="text-brand-pink hover:text-blue-500
+                                            <button
+                                                onClick={() => onEditCategory(category)}
+                                                className="text-brand-pink hover:text-blue-500
                                             opacity-0 group-hover:opacity-100
                                             transition-opacity cursor-pointer">
                                                 <Pencil size={18}/>
