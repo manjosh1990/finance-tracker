@@ -43,3 +43,8 @@ body{
     background-color: var(--color-bg);
     color: var(--color-ink);
 }
+/* Style for the date input's calendar icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(40%) sepia(50%) saturate(1000%) hue-rotate(270deg) brightness(100%) contrast(95%); /* Purple-ish */
+  cursor: pointer;
+}

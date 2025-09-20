@@ -29,7 +29,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "tbl_incomes")
+@Table(name = "tbl_income")
 @NamedEntityGraph
 public class IncomeEntity {
     @Id

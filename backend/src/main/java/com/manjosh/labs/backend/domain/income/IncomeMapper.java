@@ -17,7 +17,7 @@ public class IncomeMapper {
                 .category(category)
                 .amount(income.amount())
                 .transactionDate(LocalDate.parse(income.transactionDate()))
-                .description(income.description())
+                .description(income.description() == null ? "NA" : income.description())
                 .createdAt(income.createdAt())
                 .updatedAt(income.updatedAt())
                 .build();

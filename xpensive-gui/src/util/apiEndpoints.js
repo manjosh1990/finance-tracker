@@ -10,6 +10,9 @@ export const API_ENDPOINTS = {
     GET_ALL_CATEGORIES: "/categories",
     ADD_CATEGORIES: "/categories",
     UPDATE_CATEGORIES: "/categories",
-    // UPDATE_CATEGORIES: (id) => `/categories/${id}`,
+    GET_ALL_INCOMES: "/incomes",
+    ADD_INCOME: "/incomes",
+    DELETE_INCOME:(id)=> `/incomes/${id}`,
+    GET_CATEGORIES_BY_TYPE:(type)=> `/categories/${type}`,
     REFRESH_TOKEN: "/refresh",
 }
