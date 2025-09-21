@@ -10,12 +10,12 @@ const IncomeList = ({transactions, onDelete}) => {
             <div className="flex items-center justify-between">
                 <h5 className="text-lg text-brand-pink">Income Source</h5>
                 <div className="flex items-center justify-end gap-2">
-                    <button className="card-btn text-brand-pink bg-brand-purple/10
-                    hover:bg-brand-purple/30 transition-colors cursor-pointer rounded px-1.5 py-0.25">
+                    <button className="card-btn text-brand-pink cursor-pointer
+                        hover:bg-brand-purple/10 hover:border-brand-pink hover:border transition-all rounded-md p-2 border border-transparent px-1.5 py-0.25">
                         <Mail size={15} className="text-brand-pink"/>Send Email
                     </button>
-                    <button className="card-btn text-brand-pink bg-brand-purple/10
-                    hover:bg-brand-purple/30 transition-colors cursor-pointer rounded px-0.75 py-0.5">
+                    <button className="card-btn text-brand-pink cursor-pointer
+                        hover:bg-brand-purple/10 hover:border-brand-pink hover:border transition-all rounded-md p-2 border border-transparent px-0.75 py-0.5">
                         <Download size={15} className="text-brand-pink"/> Download
                     </button>
                 </div>

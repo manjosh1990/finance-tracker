@@ -43,6 +43,6 @@ public class AuthService {
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         final String newAccessToken = jwtUtil.generateToken(userDetails.getUsername());
-        return Map.of("token", newAccessToken, "refreshToken", refreshToken);
+        return Map.of("token", newAccessToken, "refreshToken", jwtUtil.generateRefreshToken(username));
     }
 }

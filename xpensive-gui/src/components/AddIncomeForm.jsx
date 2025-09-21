@@ -16,7 +16,6 @@ const AddIncomeForm = ({categories, onAddIncome}) => {
     });
 
     const handleSubmit = async (income) => {
-        console.log(income)
         setLoading(true);
         try {
             await onAddIncome(income);
@@ -79,8 +78,8 @@ const AddIncomeForm = ({categories, onAddIncome}) => {
                 <button
                     type="button"
                     onClick={() => handleSubmit(income)}
-                    className="add-btn add-btn-fill cursor-pointer
-                     font-semibold py-2 px-4 rounded-md shadow-md hover:bg-brand-purple/40 transition-colors"
+                    className="add-btn add-btn-fill text-brand-pink cursor-pointer
+                        hover:bg-brand-purple/10 hover:border-brand-pink hover:border transition-all rounded-md p-2 border border-transparent"
                     disabled={loading}
                 >
                     {loading ? (

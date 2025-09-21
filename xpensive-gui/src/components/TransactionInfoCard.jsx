@@ -4,7 +4,7 @@ import {addThousandSeparator, formatIndianNumber} from "../util/util.js";
 const TransactionInfoCard = ({icon,title,date,amount,type,hideDeleteBtn,onDelete}) => {
     const getAmountStyles = () =>{
         if(type === "income"){
-            return "bg-green-50 text-green-800"
+            return "bg-pink-200 text-green-700"
         }else{
             return "bg-red-50 text-red-800"
         }

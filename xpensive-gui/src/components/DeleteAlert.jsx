@@ -20,7 +20,8 @@ const DeleteAlert = ({content, onDelete}) => {
                 <button
                     onClick={handleDelete}
                     type="button"
-                    className="add-btn add-btn-fill"
+                    className="add-btn add-btn-fill text-brand-pink cursor-pointer
+                        hover:bg-brand-purple/10 hover:border-brand-pink hover:border transition-all rounded-md p-2 border border-transparent"
                     disabled={loading}
                 >
                     {loading ? (<>

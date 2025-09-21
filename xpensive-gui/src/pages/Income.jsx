@@ -9,10 +9,11 @@ import Model from "../components/Model.jsx";
 import {Plus} from "lucide-react";
 import AddIncomeForm from "../components/AddIncomeForm.jsx";
 import DeleteAlert from "../components/DeleteAlert.jsx";
+import IncomeOverview from "../components/IncomeOverview.jsx";
 
 const Income = () => {
     useUser();
-    const [income, setIncome] = useState([]);
+    const [incomes, setIncomes] = useState([]);
     const [categories, setCategories] = useState([])
     const [loading, setLoading] = useState(false);
     const [openAddIncomeModal, setOpenAddIncomeModal] = useState(false);
@@ -26,8 +27,8 @@ const Income = () => {
         try {
             const res = await axiosConfig.get(API_ENDPOINTS.GET_ALL_INCOMES);
             if (res.status === 200) {
-                console.log("income", res.data);
-                setIncome(res.data);
+                console.log("incomes", res.data);
+                setIncomes(res.data);
             }
         } catch (error) {
             console.log("error while fetching incomes", error);
@@ -42,7 +43,7 @@ const Income = () => {
             const res = await axiosConfig.get(API_ENDPOINTS.GET_CATEGORIES_BY_TYPE("income"));
             if (res.status === 200) {
                 const incomeCategories = res.data;
-                console.log("income categories", incomeCategories);
+                console.log("incomes categories", incomeCategories);
                 setCategories(incomeCategories);
             }
         } catch (error) {
@@ -60,9 +61,9 @@ const Income = () => {
         setOpenDeleteAlert({show: true, data: id})
     }
 
-    //save income
+    //save incomes
     const handleAddIncome = async (income) => {
-        console.log("income to add", income)
+        console.log("incomes to add", income)
         const {amount, categoryId, transactionDate, icon, name} = income;
         if (!name.trim()) {
             toast.error("Name is required")
@@ -94,8 +95,8 @@ const Income = () => {
                 await fetchCategories();
             }
         } catch (error) {
-            console.log("error while adding income", error);
-            toast.error(error.response?.data?.detail || "error while adding income")
+            console.log("error while adding incomes", error);
+            toast.error(error.response?.data?.detail || "error while adding incomes")
         }
     }
 
@@ -109,9 +110,8 @@ const Income = () => {
                 setOpenDeleteAlert({show: false, data: null});
             }
         }catch (error){
-            console.log("error while deleting income", error);
-            toast.error(error.response?.data?.detail || "error while deleting income")
-        }finally {
+            console.log("error while deleting incomes", error);
+            toast.error(error.response?.data?.detail || "error while deleting incomes")
         }
     }
 
@@ -120,15 +120,18 @@ const Income = () => {
             <div className="my-5 mx-auto">
                 <div className="grid grid-cols-1 gap-6">
                     <div>
-                        {/*overview income with chart*/}
-                        <button className="add-btn"
+                        {/*overview incomes with chart*/}
+
+                        <button className="add-btn flex items-center gap-1 text-sm text-brand-pink cursor-pointer
+                        hover:bg-brand-purple/10 hover:border-brand-pink hover:border transition-all rounded-md p-2 border border-transparent"
                                 onClick={() => setOpenAddIncomeModal(true)}
                         >
                             <Plus size={15} className="text-brand-pink text-lg"/>Add Income
                         </button>
+                          <IncomeOverview transactions={incomes} />
                     </div>
-                    <IncomeList transactions={income} onDelete={onDelete}/>
-                    {/*add income model*/}
+                    <IncomeList transactions={incomes} onDelete={onDelete}/>
+                    {/*add incomes model*/}
                     <Model
                         title="Add Income"
                         isOpen={openAddIncomeModal}
@@ -136,7 +139,7 @@ const Income = () => {
                     >
                         <AddIncomeForm categories={categories} onAddIncome={handleAddIncome}/>
                     </Model>
-                    {/*delete income model*/}
+                    {/*delete incomes model*/}
                     <Model
                         isOpen={openDeleteAlert.show}
                         onClose={() => setOpenDeleteAlert({show: false, data: null})}

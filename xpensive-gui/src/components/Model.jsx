@@ -9,7 +9,7 @@ const Model = ({isOpen, onClose, children, title}) => {
         overflow-hidden bg-brand-purple/10 backdrop-blur-sm">
             <div className="relative p-4 w-full max-w-2xl max-h-[90vh=]">
                 {/*Model header*/}
-                <div className="relative bg-brand-purple/10 rounded-xl border border-brand-pink">
+                <div className="relative bg-[#1a0033] rounded-xl border border-brand-pink">
                     {/*Model content*/}
                     <div className="flex items-center justify-between py-5 md:p-6 border-b border-brand-pink/40
                     rounded-t-xl">
