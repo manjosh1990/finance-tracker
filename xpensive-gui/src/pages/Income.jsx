@@ -8,6 +8,7 @@ import IncomeList from "../components/IncomeList.jsx";
 import Model from "../components/Model.jsx";
 import {Plus} from "lucide-react";
 import AddIncomeForm from "../components/AddIncomeForm.jsx";
+import DeleteAlert from "../components/DeleteAlert.jsx";
 
 const Income = () => {
     useUser();
@@ -56,7 +57,7 @@ const Income = () => {
     }, [])
 
     const onDelete = async (id) => {
-        console.log("id to delete", id)
+        setOpenDeleteAlert({show: true, data: id})
     }
 
     //save income
@@ -98,6 +99,22 @@ const Income = () => {
         }
     }
 
+    const handleDelete = async (id)=> {
+        try{
+            console.log("id to delete", id)
+            const res = await axiosConfig.delete(API_ENDPOINTS.DELETE_INCOME(id));
+            if (res.status === 204) {
+                toast.success("Income deleted successfully");
+                await fetchIncome();
+                setOpenDeleteAlert({show: false, data: null});
+            }
+        }catch (error){
+            console.log("error while deleting income", error);
+            toast.error(error.response?.data?.detail || "error while deleting income")
+        }finally {
+        }
+    }
+
     return <div>
         <Dashboard activeMenu="Income">
             <div className="my-5 mx-auto">
@@ -119,7 +136,15 @@ const Income = () => {
                     >
                         <AddIncomeForm categories={categories} onAddIncome={handleAddIncome}/>
                     </Model>
-
+                    {/*delete income model*/}
+                    <Model
+                        isOpen={openDeleteAlert.show}
+                        onClose={() => setOpenDeleteAlert({show: false, data: null})}
+                        title="Delete Income"
+                        >
+                       <DeleteAlert content ="Are you sure you want to delete this income?"
+                                    onDelete={()=>handleDelete(openDeleteAlert.data)}/>
+                    </Model>
                 </div>
             </div>
         </Dashboard>
