@@ -1,11 +1,11 @@
-import {Trash, Trash2, TrendingDown, TrendingUp, UtensilsCrossed} from "lucide-react";
-import {addThousandSeparator, formatIndianNumber} from "../util/util.js";
+import {Trash2, TrendingDown, TrendingUp, UtensilsCrossed} from "lucide-react";
+import {formatIndianNumber} from "../util/util.js";
 
-const TransactionInfoCard = ({icon,title,date,amount,type,hideDeleteBtn,onDelete}) => {
-    const getAmountStyles = () =>{
-        if(type === "income"){
+const TransactionInfoCard = ({icon, title, date, amount, type, hideDeleteBtn, onDelete}) => {
+    const getAmountStyles = () => {
+        if (type === "income") {
             return "bg-pink-200 text-green-700"
-        }else{
+        } else {
             return "bg-red-50 text-red-800"
         }
     }
@@ -14,9 +14,9 @@ const TransactionInfoCard = ({icon,title,date,amount,type,hideDeleteBtn,onDelete
         <div className="group relative flex items-center gap-4
         p-3 mt-2 rounded-lg hover:bg-brand-purple/20">
             <div className="w-12 h-12 flex items-center justify-center text-xl text-brand-pink rounded-full">
-                {icon ?(
+                {icon ? (
                     <img src={icon} alt="icon" className="h-6 w-6"/>
-                ):(
+                ) : (
                     <UtensilsCrossed className="w-6 h-6 text-brand-pink"/>
                 )}
             </div>
@@ -37,13 +37,13 @@ const TransactionInfoCard = ({icon,title,date,amount,type,hideDeleteBtn,onDelete
                             <Trash2 size={18} className="w-4 h-4"/>
                         </button>)
                     }
-                    <div className= {`flex items-center gap-2 rounded-md px-3 py-1.5 ${getAmountStyles()}`}>
+                    <div className={`flex items-center gap-2 rounded-md px-3 py-1.5 ${getAmountStyles()}`}>
                         <h6 className="text-xs font-medium">
                             {type === "income" ? "+" : "-"} ₹{formatIndianNumber(amount)}
                         </h6>
                         {type === "income" ? (
                             <TrendingUp size={18} className="w-4 h-4"/>
-                        ):(
+                        ) : (
                             <TrendingDown size={18} className="w-4 h-4"/>
                         )}
                     </div>

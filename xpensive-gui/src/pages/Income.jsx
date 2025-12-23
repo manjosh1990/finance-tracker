@@ -6,7 +6,6 @@ import {API_ENDPOINTS} from "../util/apiEndpoints.js";
 import toast from "react-hot-toast";
 import IncomeList from "../components/IncomeList.jsx";
 import Model from "../components/Model.jsx";
-import {Plus} from "lucide-react";
 import AddIncomeForm from "../components/AddIncomeForm.jsx";
 import DeleteAlert from "../components/DeleteAlert.jsx";
 import IncomeOverview from "../components/IncomeOverview.jsx";
@@ -121,14 +120,7 @@ const Income = () => {
                 <div className="grid grid-cols-1 gap-6">
                     <div>
                         {/*overview incomes with chart*/}
-
-                        <button className="add-btn flex items-center gap-1 text-sm text-brand-pink cursor-pointer
-                        hover:bg-brand-purple/10 hover:border-brand-pink hover:border transition-all rounded-md p-2 border border-transparent"
-                                onClick={() => setOpenAddIncomeModal(true)}
-                        >
-                            <Plus size={15} className="text-brand-pink text-lg"/>Add Income
-                        </button>
-                          <IncomeOverview transactions={incomes} />
+                          <IncomeOverview transactions={incomes} onAddIncome={()=>setOpenAddIncomeModal(true)}/>
                     </div>
                     <IncomeList transactions={incomes} onDelete={onDelete}/>
                     {/*add incomes model*/}
