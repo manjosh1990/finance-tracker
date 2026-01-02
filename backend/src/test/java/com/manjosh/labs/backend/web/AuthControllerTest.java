@@ -7,18 +7,13 @@ import static org.junit.Assert.assertNotNull;
 import com.manjosh.labs.backend.AbstractIT;
 import com.manjosh.labs.backend.domain.authentication.Auth;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.test.context.jdbc.Sql;
 
 @Sql("/test-users-data.sql")
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class AuthControllerTest extends AbstractIT {
 
     @Test
-    @Order(1000) // High value to ensure this runs last
     void testAuthenticate_shouldReturnToken() {
         final Auth auth = new Auth("valid@example.com", "securePassword123");
         // perform request and capture response
