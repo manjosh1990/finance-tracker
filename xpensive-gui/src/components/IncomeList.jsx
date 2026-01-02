@@ -2,7 +2,7 @@ import {Download, Mail} from "lucide-react";
 import TransactionInfoCard from "./TransactionInfoCard.jsx";
 import moment from "moment";
 
-const IncomeList = ({transactions, onDelete}) => {
+const IncomeList = ({transactions, onDelete, onDownload, onEmail}) => {
 
     return (
         <div className="card p-4 mb-4 border border-brand-purple/40 rounded-lg shadow-sm hover:shadow-md
@@ -11,11 +11,15 @@ const IncomeList = ({transactions, onDelete}) => {
                 <h5 className="text-lg text-brand-pink">Income Source</h5>
                 <div className="flex items-center justify-end gap-2">
                     <button className="card-btn text-brand-pink cursor-pointer
-                        hover:bg-brand-purple/10 hover:border-brand-pink hover:border transition-all rounded-md p-2 border border-transparent px-1.5 py-0.25">
+                        hover:bg-brand-purple/10 hover:border-brand-pink hover:border transition-all rounded-md p-2 border border-transparent px-1.5 py-0.25"
+                        onClick={onEmail}
+                    >
                         <Mail size={15} className="text-brand-pink"/>Send Email
                     </button>
                     <button className="card-btn text-brand-pink cursor-pointer
-                        hover:bg-brand-purple/10 hover:border-brand-pink hover:border transition-all rounded-md p-2 border border-transparent px-0.75 py-0.5">
+                        hover:bg-brand-purple/10 hover:border-brand-pink hover:border transition-all rounded-md p-2 border border-transparent px-0.75 py-0.5"
+                    onClick={onDownload}
+                    >
                         <Download size={15} className="text-brand-pink"/> Download
                     </button>
                 </div>

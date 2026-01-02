@@ -15,4 +15,5 @@ export const API_ENDPOINTS = {
     DELETE_INCOME:(id)=> `/incomes/${id}`,
     GET_CATEGORIES_BY_TYPE:(type)=> `/categories/${type}`,
     REFRESH_TOKEN: "/refresh",
+    INCOME_EXCEL_DOWNLOAD:"excel/download/income",
 }

@@ -86,7 +86,13 @@ const Income = () => {
             return
         }
         try {
-            const res = await axiosConfig.post(API_ENDPOINTS.ADD_INCOME, {amount, categoryId, transactionDate, icon, name})
+            const res = await axiosConfig.post(API_ENDPOINTS.ADD_INCOME, {
+                amount,
+                categoryId,
+                transactionDate,
+                icon,
+                name
+            })
             if (res.status === 201) {
                 setOpenAddIncomeModal(false);
                 toast.success("Income added successfully");
@@ -99,8 +105,8 @@ const Income = () => {
         }
     }
 
-    const handleDelete = async (id)=> {
-        try{
+    const handleDelete = async (id) => {
+        try {
             console.log("id to delete", id)
             const res = await axiosConfig.delete(API_ENDPOINTS.DELETE_INCOME(id));
             if (res.status === 204) {
@@ -108,10 +114,33 @@ const Income = () => {
                 await fetchIncome();
                 setOpenDeleteAlert({show: false, data: null});
             }
-        }catch (error){
+        } catch (error) {
             console.log("error while deleting incomes", error);
             toast.error(error.response?.data?.detail || "error while deleting incomes")
         }
+    }
+
+    const handleDownload = async () => {
+        try {
+            const res = await axiosConfig.get(API_ENDPOINTS.INCOME_EXCEL_DOWNLOAD, {responseType: "blob"});
+            let fileName = "income_download.xlsx";
+            const url = window.URL.createObjectURL(new Blob([res.data]));
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", fileName);
+            document.body.appendChild(link);
+            link.click();
+            link.parentNode.removeChild(link);
+            window.URL.revokeObjectURL(url);
+            toast.success("Download income downloaded successfully");
+        } catch (error) {
+            console.log("error while downloading incomes", error);
+            toast.error(error.response?.data?.detail || "error while deleting incomes")
+        }
+    }
+
+    const handleEmail = () => {
+        console.log("email")
     }
 
     return <div>
@@ -120,9 +149,12 @@ const Income = () => {
                 <div className="grid grid-cols-1 gap-6">
                     <div>
                         {/*overview incomes with chart*/}
-                          <IncomeOverview transactions={incomes} onAddIncome={()=>setOpenAddIncomeModal(true)}/>
+                        <IncomeOverview transactions={incomes} onAddIncome={() => setOpenAddIncomeModal(true)}/>
                     </div>
-                    <IncomeList transactions={incomes} onDelete={onDelete}/>
+                    <IncomeList transactions={incomes} onDelete={onDelete}
+                                onDownload={handleDownload}
+                                onEmail={handleEmail}
+                    />
                     {/*add incomes model*/}
                     <Model
                         title="Add Income"
@@ -136,9 +168,9 @@ const Income = () => {
                         isOpen={openDeleteAlert.show}
                         onClose={() => setOpenDeleteAlert({show: false, data: null})}
                         title="Delete Income"
-                        >
-                       <DeleteAlert content ="Are you sure you want to delete this income?"
-                                    onDelete={()=>handleDelete(openDeleteAlert.data)}/>
+                    >
+                        <DeleteAlert content="Are you sure you want to delete this income?"
+                                     onDelete={() => handleDelete(openDeleteAlert.data)}/>
                     </Model>
                 </div>
             </div>
